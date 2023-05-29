@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">WellnessApp</string>
+    <string name="button_name">Add One</string>
+    <string name="counter_message">You have had %d glasses of water</string>
+</resources>
