@@ -20,6 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.wellnessapp.ui.theme.StateFullTaskItem
 import com.example.wellnessapp.ui.theme.WellnessAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -41,8 +42,13 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun WellnessScreen() {
-  StateFullCounter()
+    Column {
+        StateFullCounter()
+        TaskList(taskList = list)
+    }
 }
+
+private val list: List<TaskClass> = List(30) {it -> TaskClass(it, "Task #$it")}
 
 @Composable
 fun StateFullCounter() {
