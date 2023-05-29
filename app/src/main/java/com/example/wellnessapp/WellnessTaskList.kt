@@ -11,7 +11,7 @@ import com.example.wellnessapp.ui.theme.TaskItem
 fun TaskList(taskList: List<TaskClass>) {
     LazyColumn(){
         items(taskList){task ->
-            StateFullTaskItem(taskName = task.taskName)
+            StateFullTaskItem(taskName = task.taskName, onClicked = {})
         }
     }
 }

@@ -24,12 +24,15 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun StateFullTaskItem(taskName: String) {
+fun StateFullTaskItem(taskName: String,
+                      onClicked: () -> Unit) {
     var checked by rememberSaveable { mutableStateOf(false) }
 
 
     TaskItem(taskName = taskName,
-        checkedValue = checked, onCheckChanged = {value -> checked = value})
+        checkedValue = checked,
+        onCheckChanged = {value -> checked = value},
+    onClicked = onClicked)
 
 
 }
@@ -38,7 +41,8 @@ fun StateFullTaskItem(taskName: String) {
 fun TaskItem( modifier: Modifier = Modifier,
               taskName: String,
               checkedValue: Boolean,
-              onCheckChanged: (Boolean) -> Unit) {
+              onCheckChanged: (Boolean) -> Unit,
+onClicked: () -> Unit) {
     Row(modifier = modifier.padding(16.dp),
         verticalAlignment = Alignment.CenterVertically){
         Text(text = taskName,
@@ -48,7 +52,7 @@ fun TaskItem( modifier: Modifier = Modifier,
         Checkbox(checked = checkedValue,
             onCheckedChange = onCheckChanged )
 
-        IconButton(onClick = { /*TODO*/ }) {
+        IconButton(onClick = onClicked) {
             Icon(imageVector = Icons.Filled.Close,
                 contentDescription = "Close")
         }
@@ -58,5 +62,5 @@ fun TaskItem( modifier: Modifier = Modifier,
 @Preview(showBackground = true)
 @Composable
 fun TaskItemPrev() {
-    TaskItem(taskName = "This nuts", checkedValue = false, onCheckChanged = {})
+    TaskItem(taskName = "This nuts", checkedValue = false, onCheckChanged = {}, onClicked = {})
 }
