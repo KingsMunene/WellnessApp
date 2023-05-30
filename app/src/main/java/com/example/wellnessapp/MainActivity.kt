@@ -17,6 +17,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
+import androidx.compose.runtime.toMutableStateList
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -45,11 +46,15 @@ class MainActivity : ComponentActivity() {
 fun WellnessScreen() {
     Column {
         StateFullCounter()
-        TaskList(taskList = list)
+
+        val list = remember { getWellnessList().toMutableStateList() }
+        TaskList(taskList = list, onClicked = {task -> list.remove(task) })
     }
 }
 
-private val list: List<TaskClass> = List(30) {it -> TaskClass(it, "Task #$it")}
+
+// Mutable list of tasks
+private fun getWellnessList() = List(30) {it -> TaskClass(it, "Task #$it")}
 
 @Composable
 fun StateFullCounter() {

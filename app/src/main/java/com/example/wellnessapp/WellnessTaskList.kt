@@ -8,10 +8,12 @@ import com.example.wellnessapp.ui.theme.StateFullTaskItem
 import com.example.wellnessapp.ui.theme.TaskItem
 
 @Composable
-fun TaskList(taskList: List<TaskClass>) {
+fun TaskList(taskList: List<TaskClass>,
+onClicked: (TaskClass) -> Unit) {
     LazyColumn(){
-        items(taskList){task ->
-            StateFullTaskItem(taskName = task.taskName, onClicked = {})
+        items(items = taskList,
+        key = {task -> task.taskID}){task ->
+            StateFullTaskItem(taskName = task.taskName, onClicked = { onClicked(task) })
         }
     }
 }
