@@ -52,10 +52,6 @@ fun WellnessScreen() {
     }
 }
 
-
-// Mutable list of tasks
-private fun getWellnessList() = List(30) {it -> TaskClass(it, "Task #$it")}
-
 @Composable
 fun StateFullCounter() {
     var counter by rememberSaveable{ mutableStateOf(0)}
