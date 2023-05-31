@@ -26,14 +26,15 @@ import com.example.wellnessapp.TaskClass
 
 @Composable
 fun StateFullTaskItem(taskName: String,
-                      onClicked: () -> Unit) {
-    var checked by rememberSaveable { mutableStateOf(false) }
-
-
+                      onClicked: () -> Unit,
+                      onCheckChanged: (Boolean) -> Unit,
+                      checked : Boolean
+) {
     TaskItem(taskName = taskName,
         checkedValue = checked,
-        onCheckChanged = {value -> checked = value},
-    onClicked = onClicked)
+        onCheckChanged = onCheckChanged,
+        onClicked = onClicked
+    )
 
 
 }

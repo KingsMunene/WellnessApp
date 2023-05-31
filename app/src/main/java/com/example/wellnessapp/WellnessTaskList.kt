@@ -9,11 +9,15 @@ import com.example.wellnessapp.ui.theme.TaskItem
 
 @Composable
 fun TaskList(taskList: List<TaskClass>,
-onClicked: (TaskClass) -> Unit) {
+onClicked: (TaskClass) -> Unit,
+onCheckChanged: (TaskClass, Boolean) -> Unit){
     LazyColumn(){
         items(items = taskList,
         key = {task -> task.taskID}){task ->
-            StateFullTaskItem(taskName = task.taskName, onClicked = { onClicked(task) })
+            StateFullTaskItem(taskName = task.taskName,
+                onClicked = { onClicked(task) },
+                checked = task.checked,
+                onCheckChanged = {checked -> onCheckChanged(task, checked)})
         }
     }
 }
