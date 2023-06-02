@@ -6,11 +6,14 @@ import androidx.lifecycle.ViewModel
 
 class WellnessViewModel : ViewModel() {
 
+    // Get a list of task and make it a mutable state list
     private val _tasks = getWellnessList().toMutableStateList()
 
+    // Expose the list as read-only
     val tasks : List<TaskClass>
         get() = _tasks
 
+    // Function to remove a task from the list
     fun remove(item: TaskClass){
         _tasks.remove(item)
     }
@@ -25,5 +28,5 @@ class WellnessViewModel : ViewModel() {
 
 }
 
-// Mutable list of tasks
+// Function to generate a list of tasks
 private fun getWellnessList() = List(30) {it -> TaskClass(it, "Task #$it")}
