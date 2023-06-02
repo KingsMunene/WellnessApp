@@ -1,4 +1,12 @@
 package com.example.wellnessapp
 
-data class TaskClass(val taskID : Int, val taskName : String, var checked : Boolean = false)
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
+
+class TaskClass(val taskID : Int, var taskName : String,
+                     initialCheck : Boolean = false){
+    var checked by mutableStateOf(initialCheck)
+}
 

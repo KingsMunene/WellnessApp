@@ -51,7 +51,8 @@ fun WellnessScreen(wellnessViewModel: WellnessViewModel = viewModel()) {
 
         TaskList(taskList = wellnessViewModel.tasks,
             onClicked = {task -> wellnessViewModel.remove(task) },
-            onCheckChanged = {taskClass, checked -> wellnessViewModel.changeTaskChecked(taskClass, checked)}
+            onCheckChanged = {task, checked ->
+                wellnessViewModel.changeTaskChecked(task, checked)}
             )
     }
 }
